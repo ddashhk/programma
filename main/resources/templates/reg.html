@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Регистрация</title>
+    <style>
+        body {
+            background-color: #967DDB;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #967ddb;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control-users {
+            width: 600px; /* Set input fields width to 600 pixels */
+            background-color: #ffffff; /* White background for form controls */
+            border: 1px solid #967DDB; /* Purple border color */
+            color: #333; /* Dark text color for form controls */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .form-control-users::placeholder {
+            color: #967DDB; /* Purple placeholder text color */
+        }
+
+        .btn-reg {
+            width: 250px; /* Set button width to 250 pixels */
+            height: 40px; /* Set button height to 50 pixels */
+            background-color: #967DDB; /* Purple background for buttons */
+            color: #ffffff; /* White text color for buttons */
+            border: 1px solid #967DDB; /* Purple border color for buttons */
+            border-radius: 5px;
+            padding: 10px;
+            margin-right: 50px; /* Add margin between the buttons */
+            cursor: pointer;
+            text-decoration: none; /* Remove underlines for links */
+            display: inline-block; /* Ensure inline-block display for proper styling */
+        }
+        .btn-login {
+            width: 250px; /* Set button width to 250 pixels */
+            height: 18px; /* Set button height to 50 pixels */
+            background-color: #967DDB; /* Purple background for buttons */
+            color: #ffffff; /* White text color for buttons */
+            border: 1px solid #967DDB; /* Purple border color for buttons */
+            border-radius: 5px;
+            padding: 10px;
+            margin-right: 50px; /* Add margin between the buttons */
+            cursor: pointer;
+            text-decoration: none; /* Remove underlines for links */
+            display: inline-block; /* Ensure inline-block display for proper styling */
+        }
+        .btn-login {
+            margin-right: 0; /* Remove margin for the second button */
+        }
+
+        .btn-reg:hover, .btn-login:hover {
+            background-color: #734fa0; /* Darker purple on hover */
+        }
+
+        .alert {
+            background-color: #967DDB; /* Purple background for the alert */
+            color: #ffffff; /* White text color for the alert */
+            border: 1px solid #734fa0; /* Darker purple border color for the alert */
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="card shadow-lg o-hidden border-0 my-5">
+        <div class="card-body p-0">
+            <div class="p-5">
+                <div class="text-center">
+                    <h4 class="text-dark mb-4">Создание профиля</h4>
+                </div>
+                <form action="/reg" method="post" class="users">
+                    <div class="mb-3">
+                        <input class="form-control form-control-users" type="text" placeholder="Логин" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control form-control-users" type="text" placeholder="ФИО" name="fio" required>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input class="form-control form-control-users" type="password" placeholder="Пароль" name="password" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control form-control-users" type="password" placeholder="Повторите пароль" name="passwordRepeat" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary btn-reg" type="submit">Зарегистрироваться</button>
+                    <a class="btn btn-outline-primary btn-login" href="/login">Вход</a>
+                </form>
+                <hr>
+                <div th:if="${message}" class="text-center mt-20px">
+                    <div class="alert alert-success" role="alert">
+                        <strong><span th:text="${message}"></span></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+
+</html>

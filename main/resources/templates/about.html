@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>О нас</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #967DDB;
+
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .goal {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .main-points {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .content-block {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+    <head th:insert="blocks/head :: head"></head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav style="background: #967DDB"
+         class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 accent"
+         th:insert="blocks/navLeft :: nav"></nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div th:insert="blocks/navTop :: nav"></div>
+            <div class="container-fluid">
+                <h3 class="text-dark mb-1 pb-24">О нас</h3>
+                <div class="mb-3 content-container" align="justify">
+                    <div class="content-block">
+                        <p class="lead">
+                            <img src="img/card1.png" alt="Image 1">
+                        <div class="title">Распределяй работу</div>
+                        <div class="goal">Планирование</div>
+                        <div class="main-points">• Настраиваемые задачи<br /> • Планируй раздничные и особые дни</div>
+                        </p>
+                    </div>
+                    <div class="content-block">
+                        <p class="lead">
+                            <img src="img/card2.png" alt="Image 2">
+                        <div class="title">Управляй и контролируй</div>
+                        <div class="goal">Контроль сотрудников</div>
+                        <div class="main-points">• Назначение задач<br /> • Создание списков участников<br /> • Отслеживание сроков</div>
+                        </p>
+                    </div>
+                    <div class="content-block">
+                        <p class="lead">
+                            <img src="img/card3.png" alt="Image 3">
+                        <div class="title">Масштабируй</div>
+                        <div class="goal">Неограниченный доступ</div>
+                        <div class="main-points">• Доступ 24/7 с любого устройства с выходом в Интернет<br /> •Универсальность</div>
+                        </p>
+                    </div>
+                    <div class="content-block">
+                        <p class="lead">
+                            <img src="img/card4.png" alt="Image 4">
+                        <div class="title">Планируй</div>
+                        <div class="goal">Оценки и прогнозы</div>
+                        <div class="main-points">• Безопасное хранение документов<br /> • Планирование досуга</div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/theme.js"></script>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Задачи</title>
+    <style>
+        .w-100{
+
+        }
+    </style>
+
+</head>
+
+<head th:insert="blocks\head :: head"></head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav style="background: #976ddb"
+         class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 accent"
+         th:insert="blocks/navLeft :: nav"></nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div th:insert="blocks/navTop :: nav"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="text-dark mb-4">Задачи</h3>
+                    </div>
+                </div>
+                <div th:if="${message}" class="text-center mt-20px">
+                    <div class="alert alert-success" role="alert">
+                        <strong><span th:text="${message}"></span></strong>
+                    </div>
+                </div>
+                <div class="row mb-5px">
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Наименование</strong>
+                        </label>
+                    </div>
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Категория</strong>
+                        </label>
+                    </div>
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Срочность</strong>
+                        </label>
+                    </div>
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Дедлайн</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input th:value="${project.name}" class="form-control" type="text" readonly>
+                    </div>
+                    <div class="col">
+                        <input th:value="${project.typeOFtask.name}" class="form-control" type="text" readonly>
+                    </div>
+                    <div class="col">
+                        <input th:value="${project.vazhnost.name}" class="form-control" type="text" readonly>
+                    </div>
+                    <div class="col">
+                        <input th:value="${project.date}" class="form-control" type="text" readonly>
+                    </div>
+                </div>
+                <hr>
+                <div class="row" th:unless="${project.status.name() == 'FINISH'}">
+                    <div class="col">
+                        <h4 class="text-dark mb-4">Добавить задачу</h4>
+                    </div>
+                </div>
+                <div class="row mb-5px" th:unless="${project.status.name() == 'FINISH'}">
+                    <div class="col">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Наименование</strong>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Категория</strong>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Выполняющий</strong>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Дедлайн</strong>
+                        </label>
+                    </div>
+                    <div class="col mxw-110px"></div>
+                </div>
+                <div class="row mb-5px" th:unless="${project.status.name() == 'FINISH'}">
+                    <div class="col">
+                        <form th:action="'/projects/' + ${project.id} + '/tasks/add/'" method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" name="name" required class="form-control">
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" required name="typeOFtask">
+                                        <option th:each="i : ${categories}" th:value="${i}"
+                                                th:label="${i.name}"></option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" required name="idEmployee"
+                                            onmousedown="if(this.options.length>5){this.size=5;}"
+                                            onchange='this.size=0;' onblur="this.size=0;">
+                                        <option th:each="i : ${employees}" th:value="${i.id}"
+                                                th:label="${i.fio}"></option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="date" name="date"
+                                           onfocus="this.min=new Date().toISOString().split('T')[0]" required>
+                                </div>
+
+                                <div class="col mxw-110px">
+                                    <button class="btn btn-outline-primary" type="submit">Добавить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mb-5px">
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Наименование</strong>
+                        </label>
+                    </div>
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Категория</strong>
+                        </label>
+                    </div>
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Выполняющий</strong>
+                        </label>
+                    </div>
+                    <div class="col text-center">
+                        <label class="col-form-label text-center text-dark">
+                            <strong>Дедлайн</strong>
+                        </label>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1" th:if="${project.status.name() != 'FINISH'}"></div>
+                </div>
+                <div th:each="i : ${project.tasks}" class="row mb-5px">
+                    <div class="col">
+                        <form th:action="'/projects/' + ${project.id} + '/tasks/' + ${i.id} + '/verification'"
+                              method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <input th:value="${i.name}" class="form-control" type="text"
+                                           readonly>
+                                </div>
+                                <div class="col">
+                                    <input th:value="${i.typeOFtask.name}" class="form-control" type="text"
+                                           readonly>
+                                </div>
+                                <div class="col">
+                                    <input th:value="${i.employee.fio}" class="form-control" type="text" readonly>
+                                </div>
+                                <div class="col">
+                                    <input th:value="${i.date}" class="form-control" type="date" readonly>
+                                </div>
+
+                                <div class="col">
+                                    <input th:if="${i.status.name() == 'VERIFICATION'}" class="form-control" type="number" name="score" min="0" max="10" step="1" required>
+                                    <input th:if="${i.status.name() == 'FINISH'}" class="form-control" type="number" th:value="${i.score}" readonly>
+                                </div>
+                                <div class="col-1">
+                                    <div class="btn btn-outline-info w-100 dropdown" style="padding: 8px 20px;">
+                                        <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#">Описание</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" th:href="'/projects/' + ${project.id} + '/tasks/' + ${i.id} + '/description'">Добавить</a>
+                                            <a th:if="${i.status.name() == 'VERIFICATION'}" class="dropdown-item"
+                                               th:href="'/projects/' + ${project.id} + '/tasks/' + ${i.id} + '/remake'">На доработку</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-1" th:unless="${project.status.name() == 'FINISH'}">
+                                    <a th:href="'/projects/' + ${project.id} + '/tasks/' + ${i.id} + '/delete'"
+                                       class="btn btn-outline-danger w-100" type="submit">Удалить</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+
+</html>

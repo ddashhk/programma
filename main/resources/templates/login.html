@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Вход</title>
+    <style>
+        body {
+            background-color: #967DDb;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #967ddb; /* White text color */
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8); /* White card background with transparency */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control-users {
+            width: 600px; /* Set input fields width to 600 pixels */
+            background-color: #ffffff; /* White background for form controls */
+            border: 1px solid #967DDB; /* Purple border color */
+            color: #333; /* Dark text color for form controls */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .form-control-users::placeholder {
+            color: #967DDB; /* Purple placeholder text color */
+        }
+
+        .btn-reg-1 {
+            width: 272px;
+            background-color: #967DDB;
+            color: #ffffff;
+            border: 1px solid #967DDB;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px auto; /* Center the button */
+            cursor: pointer;
+            text-decoration: none;
+            display: block; /* Ensure block display for proper centering */
+        }
+
+        .btn-reg-1:hover {
+            background-color: #734fa0; /* Darker purple on hover */
+        }
+
+        .alert {
+            background-color: #967DDB; /* Purple background for the alert */
+            color: #ffffff; /* White text color for the alert */
+            border: 1px solid #734fa0; /* Darker purple border color for the alert */
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-12 col-xl-10">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body p-0">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h4 class="text-dark mb-4" style="font-size: 25px;">С возвращением!
+                                <br>Контроль над задачами. <br>Успех в ваших руках вместе c Uniplan</h4>
+                        </div>
+                        <form action="/login" method="post" class="users">
+                            <div class="mb-3">
+                                <input class="form-control form-control-users fs-14px" placeholder="Логин"
+                                       name="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control form-control-users fs-14px" type="password"
+                                       placeholder="Пароль" name="password" required>
+                            </div>
+                            <button class="btn btn-outline-primary btn-reg-1" type="submit">Вход</button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small mr-10px btn-reg-1" href="/reg">Регистрация</a>
+                        </div>
+                        <div th:if="${param.error}" class="text-center mt-20px">
+                            <div class="alert alert-success" role="alert">
+                                <strong><span>Некорректный ввод логина или пароля</span></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+</html>

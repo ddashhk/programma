@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Домашняя</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat Alternates', sans-serif;
+            overflow-x: hidden;
+        }
+        .home {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px;
+            background-color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .logo {
+            fill: #FFFFFF;
+        }
+
+        .login-button {
+            text-decoration: none;
+            color: #0052CC;
+            font-weight: bold;
+            border: 2px solid #0052CC;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            margin-right: 245px;
+        }
+        .login-button:hover {
+            background-color:#0052CC;
+            color: white;
+        }
+        .registration-button {
+            width: 205px;
+            height: 30px;
+            background-color: #0052CC;
+            color: white;
+            text-decoration: none;
+            border: 2px solid #0052CC;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+            margin-top: 57px;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: lowercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat Alternates', sans-serif;
+        }
+        .registration-button: hover {
+            background-color: white;
+            color: #0052CC;
+            border-color: white;
+        }
+        .content {
+            width: 100%;
+            height: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FFFFFF;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .p-1 {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 612px;
+            background: linear-gradient(82.5deg, rgba(230, 150, 220, 1) 0%, rgba(150, 125, 219, 1) 100%);
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-page1 {
+            background-image: url('img/img-page1.png');
+            width: 375px;
+            height: 300px;
+            margin-top: 57px;
+            margin-bottom: 57px;
+            margin-right: 103px;
+            margin-left: auto;
+            display: block;
+        }
+
+        .uni-plan {
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            color: #FFFFFF;
+            text-align: left;
+            margin-left: 103px;
+            margin-top: 100px;
+        }
+        .registration-container-wrapper {
+            margin-top: 80px;
+            margin-left: 103px;
+        }
+        .registration-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .login-input input {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+            border: 2px solid #0052CC;
+            border-radius: 5px;
+            font-size: 25px;
+            text-transform: lowercase;
+            font-family: 'Montserrat Alternates', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .login-input input:focus {
+            outline: none;
+            border-color: #0099FF;
+        }
+        .vector{
+                margin-left: 10px;
+                margin-top: 10px;
+        }
+        .registration-button {
+            width: 400px;
+            height: 50px;
+            background-color: #0052CC;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 57px;
+            font-size: 25px;
+            font-family: 'Montserrat Alternates', sans-serif;
+        }
+        .p-2,
+        .p-2 * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .p-2 {
+            width: 100vw;
+            height: 100vw;
+            background: linear-gradient(0deg, rgba(255, 233, 255, 1) 0%, rgba(255, 233, 255, 0) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+        .p-2-title {
+            color: #000000;
+            text-align: left;
+            font: 600 60px "MontserratAlternates-SemiBold", sans-serif;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .img-2 {
+            background-image: url('img/img-page2.png');
+            border-radius: 20px;
+            flex-shrink: 0;
+            width: 519px;
+            height: 300px;
+            position: absolute;
+            left: 800px;
+            top: 1px;
+            overflow: hidden;
+            margin-top: 200px;
+        }
+        .desk-1 {
+            color: #000000;
+            text-align: center;
+            font: 500 50px "MontserratAlternates-Medium", sans-serif;
+            margin-top: 200px;
+            flex-shrink: 0;
+            width: 518px;
+            height: 300px;
+            position: absolute;
+            left: 100px;
+            top: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rectangle-109 {
+            background: #ffffff;
+            border-radius: 40px;
+            width: 518px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .rectangle-109-text {
+            color: #000000;
+            font:  25px "MontserratAlternates-Medium", sans-serif;
+            text-align: left;
+            margin-left: 34px; /* Добавили отступ слева */
+        }
+        .uni-plan-uni-plan {
+            color: #000000;
+            text-align: left;
+            font: 500 30px "MontserratAlternates-Medium", sans-serif;
+            position: absolute;
+            left: 34px;
+            top: 22px;
+            width: 590px;
+        }
+        .rectangle-111 {
+            background: #e496dd;
+            width: 22px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
+        .footer {
+            width: 100vw;
+            padding: 20px;
+            background-color: #e496dd;
+            color: white;
+            text-align: center;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var registrationButton = document.querySelector('.registration-button');
+            var loginInput = document.querySelector('.login-input input');
+            var errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'Неверный формат электронного адреса';
+            var loginInputContainer = document.querySelector('.login-input');
+            loginInputContainer.insertBefore(errorMessage, loginInputContainer.firstChild);
+
+            registrationButton.addEventListener('click', function(event) {
+                var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                var isValidEmail = emailPattern.test(loginInput.value);
+
+                if (!isValidEmail) {
+                    event.preventDefault(); // Отменяем отправку формы
+                    errorMessage.style.display = 'block';
+                    loginInput.value = ''; // Очищаем введенные данные
+                } else {
+                    // Добавляем переход на страницу reg.html
+                    window.location.href = 'reg.html';
+                }
+            });
+
+            loginInput.addEventListener('input', function() {
+                errorMessage.style.display = 'none'; // Скрываем сообщение об ошибке при изменении ввода
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="home">
+    <div class="header" style="width: 100%; height: 63px;position: relative; left: 103px;">
+        <svg
+                class="logo"
+                width="139"
+                height="32"
+                viewBox="0 0 139 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                    d="M18.0859 1.66193H24.2365V20.554C24.2365 22.6752 23.7299 24.5312 22.7166 26.1222C21.7128 27.7131 20.3066 28.9536 18.4979 29.8438C16.6892 30.7244 14.5822 31.1648 12.1768 31.1648C9.76208 31.1648 7.65033 30.7244 5.84162 29.8438C4.03291 28.9536 2.62666 27.7131 1.62287 26.1222C0.619081 24.5312 0.117188 22.6752 0.117188 20.554V1.66193H6.26776V20.0284C6.26776 21.1364 6.50923 22.1212 6.99219 22.983C7.48461 23.8447 8.1759 24.5218 9.06605 25.0142C9.9562 25.5066 10.9931 25.7528 12.1768 25.7528C13.37 25.7528 14.407 25.5066 15.2876 25.0142C16.1778 24.5218 16.8643 23.8447 17.3473 22.983C17.8397 22.1212 18.0859 21.1364 18.0859 20.0284V1.66193Z"
+                    fill="#0052CC"
+            />
+            <path
+                    d="M35.2344 18.1392V30.7528H29.1832V8.93466H34.9503V12.7841H35.206C35.6889 11.5152 36.4986 10.5114 37.6349 9.77273C38.7713 9.02462 40.1491 8.65057 41.7685 8.65057C43.2836 8.65057 44.6046 8.98201 45.7315 9.64489C46.8584 10.3078 47.7344 11.2547 48.3594 12.4858C48.9844 13.7074 49.2969 15.1657 49.2969 16.8608V30.7528H43.2457V17.9403C43.2552 16.6051 42.9143 15.5634 42.223 14.8153C41.5317 14.0578 40.58 13.679 39.3679 13.679C38.5535 13.679 37.8338 13.8542 37.2088 14.2045C36.5933 14.5549 36.1103 15.0663 35.7599 15.7386C35.419 16.4015 35.2438 17.2017 35.2344 18.1392Z"
+                    fill="#0052CC"
+            />
+            <path
+                    d="M54.0661 30.7528V8.93466H60.1172V30.7528H54.0661ZM57.1058 6.12216C56.2062 6.12216 55.4344 5.82386 54.7905 5.22727C54.156 4.62121 53.8388 3.89678 53.8388 3.05398C53.8388 2.22064 54.156 1.50568 54.7905 0.909092C55.4344 0.303031 56.2062 0 57.1058 0C58.0054 0 58.7725 0.303031 59.407 0.909092C60.0509 1.50568 60.3729 2.22064 60.3729 3.05398C60.3729 3.89678 60.0509 4.62121 59.407 5.22727C58.7725 5.82386 58.0054 6.12216 57.1058 6.12216Z"
+                    fill="#0052CC"
+            />
+            <path
+                    d="M66.4134 30.7528V1.66193H75.8026C77.867 1.66193 79.5904 2.05966 80.973 2.85511C82.3651 3.6411 83.4115 4.71118 84.1122 6.06534C84.8224 7.41951 85.1776 8.94413 85.1776 10.6392C85.1776 12.3343 84.8272 13.8636 84.1264 15.2273C83.4257 16.5814 82.384 17.6562 81.0014 18.4517C79.6188 19.2377 77.9001 19.6307 75.8452 19.6307H68.4588V17.2443H75.7741C77.2988 17.2443 78.563 16.9602 79.5668 16.392C80.5705 15.8144 81.3187 15.0284 81.8111 14.0341C82.313 13.0398 82.5639 11.9081 82.5639 10.6392C82.5639 9.37027 82.313 8.23864 81.8111 7.24432C81.3187 6.25 80.5658 5.46875 79.5526 4.90057C78.5488 4.33239 77.2751 4.0483 75.7315 4.0483H69.0696V30.7528H66.4134Z"
+                    fill="#0052CC"
+            />
+            <path d="M93.4162 1.66193V30.7528H90.8878V1.66193H93.4162Z" fill="#0052CC" />
+            <path
+                    d="M106.2 31.25C104.884 31.25 103.681 30.9943 102.592 30.483C101.503 29.9621 100.637 29.214 99.9929 28.2386C99.349 27.2538 99.027 26.0606 99.027 24.6591C99.027 23.5795 99.2306 22.6705 99.6378 21.9318C100.045 21.1932 100.623 20.5871 101.371 20.1136C102.119 19.6402 103.004 19.2661 104.027 18.9915C105.05 18.7169 106.177 18.5038 107.408 18.3523C108.629 18.2008 109.661 18.0682 110.504 17.9545C111.357 17.8409 112.005 17.661 112.45 17.4148C112.895 17.1686 113.118 16.7708 113.118 16.2216V15.7102C113.118 14.2235 112.673 13.054 111.783 12.2017C110.902 11.34 109.633 10.9091 107.976 10.9091C106.404 10.9091 105.121 11.2547 104.126 11.946C103.142 12.6373 102.45 13.4517 102.053 14.3892L99.652 13.5227C100.144 12.3295 100.826 11.3778 101.697 10.6676C102.569 9.94792 103.544 9.43182 104.624 9.11932C105.703 8.79735 106.797 8.63636 107.905 8.63636C108.738 8.63636 109.605 8.74527 110.504 8.96307C111.413 9.18087 112.256 9.55966 113.033 10.0994C113.809 10.6297 114.439 11.3731 114.922 12.3295C115.405 13.2765 115.646 14.4792 115.646 15.9375V30.7528H113.118V27.3011H112.962C112.659 27.9451 112.209 28.5701 111.612 29.1761C111.016 29.7822 110.268 30.2794 109.368 30.6676C108.468 31.0559 107.412 31.25 106.2 31.25ZM106.541 28.9347C107.886 28.9347 109.051 28.6364 110.036 28.0398C111.02 27.4432 111.778 26.6525 112.308 25.6676C112.848 24.6733 113.118 23.5795 113.118 22.3864V19.233C112.929 19.4129 112.611 19.5739 112.166 19.7159C111.731 19.858 111.224 19.9858 110.646 20.0994C110.078 20.2036 109.51 20.2936 108.942 20.3693C108.374 20.4451 107.862 20.5114 107.408 20.5682C106.177 20.7197 105.125 20.9564 104.254 21.2784C103.383 21.6004 102.715 22.0455 102.251 22.6136C101.787 23.1723 101.555 23.892 101.555 24.7727C101.555 26.0985 102.029 27.1259 102.976 27.8551C103.923 28.5748 105.111 28.9347 106.541 28.9347Z"
+                    fill="#0052CC"
+            />
+            <path
+                    d="M124.901 17.1165V30.7528H122.372V8.93466H124.83V12.358H125.057C125.568 11.2405 126.364 10.3456 127.443 9.6733C128.532 8.99148 129.877 8.65057 131.477 8.65057C132.945 8.65057 134.233 8.95833 135.341 9.57386C136.458 10.1799 137.325 11.0748 137.94 12.2585C138.565 13.4422 138.878 14.8958 138.878 16.6193V30.7528H136.349V16.7756C136.349 14.9858 135.848 13.5701 134.844 12.5284C133.849 11.4867 132.514 10.9659 130.838 10.9659C129.692 10.9659 128.674 11.2121 127.784 11.7045C126.894 12.197 126.188 12.9072 125.668 13.8352C125.156 14.7538 124.901 15.8475 124.901 17.1165Z"
+                    fill="#0052CC"
+            />
+        </svg>
+        <div class="button-container">
+            <a href="/login" class="login-button">Войти</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="p-1">
+            <div class="registr-txt-content">
+                <div class="uni-plan">
+                    UniPlan<br />ВСЕ СОТРУДНИКИ,<br />ЗАДАЧИ И ИНСТРУМЕНТЫ В<br />ОДНОМ
+                    МЕСТЕ<br />
+                </div>
+                <div class="registration-container-wrapper">
+                    <div class="registration-container">
+                            <a href="/reg" class="registration-button">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+            <img class="img-page1"  style="width: 375px;height: 300px;margin-top: 100px">
+            <svg
+                    class="vector"
+                    width="2288"
+                    height="107"
+                    viewBox="0 0 2288 107"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                        d="M0 107H2288V0C1095.12 194.005 1064.13 -115.104 0 98.3535V107Z"
+                        fill="white"
+                />
+            </svg>
+        </div>
+        <div class="p-2">
+            <div class="p-2-title">Источник повышения<br />производительности</div>
+            <img class="img-2"  />
+            <div class="desk-1">
+                <div class="rectangle-109">
+                    <div class="rectangle-109-text">
+                        Простой в использовании, <br />с гибкими настройками и широкими
+                        возможностями UniPlan. С помощью досок UniPlan задания структурируются,<br />
+                        и работа продвигается вперед.<br />
+                        Достаточно одного взгляда,<br />
+                        чтобы видеть все задачи.</div>
+                </div>
+                <div class="rectangle-111"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Разработано
+            <a href="https://www.instagram.com/delourpity/">Студентом БГУИР</a>
+            | Курсовая 2023</p>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+
+</html>

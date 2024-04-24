@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Статистика заказов</title>
+</head>
+
+<head th:insert="blocks\head :: head"></head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav style="background: #976ddb"
+         class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 accent"
+         th:insert="blocks/navLeft :: nav"></nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div th:insert="blocks/navTop :: nav"></div>
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4">Статистика</h3>
+
+                <div class="row">
+                    <div class="col" align="center"><p class="lead">Сотрудник</p></div>
+                    <div class="col" align="center"><p class="lead">Количество задач в ожидании</p></div>
+                    <div class="col" align="center"><p class="lead">Количество задач в процессе</p></div>
+                    <div class="col" align="center"><p class="lead">Количество задач на проверке</p></div>
+                    <div class="col" align="center"><p class="lead">Количество задач завершено</p></div>
+                </div>
+                <div th:each="i : ${employees}" class="row">
+                    <div class="col" align="center"><p th:text="${i.fio}"></p></div>
+                    <div class="col" align="center"><p th:text="${i.countWaiting()}"></p></div>
+                    <div class="col" align="center"><p th:text="${i.countInProgress()}"></p></div>
+                    <div class="col" align="center"><p th:text="${i.countVerification()}"></p></div>
+                    <div class="col" align="center"><p th:text="${i.countFinish()}"></p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+
+</html>
